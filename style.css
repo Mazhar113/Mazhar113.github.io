@@ -1,81 +1,114 @@
+/* ==========================
+   Mazhar Ali Portfolio CSS
+   ========================== */
+
+/* Global */
 body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #0f1724;
+  color: white;
+  line-height: 1.6;
 }
 
+a { color: #7c5cff; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-#themeToggle {
-padding: 5px 10px;
-cursor: pointer;
-}
-
-
+/* Hero Section */
 .hero {
-height: 70vh;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-background: linear-gradient(135deg, #007bff, #6610f2);
-color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #0f1724, #101b33);
 }
 
-
-.section {
-padding: 50px;
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #7c5cff;
+  margin-bottom: 20px;
+  box-shadow: 0 0 12px #7c5cffaa;
 }
 
-
-#projectContainer {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 20px;
+.hero h1 {
+  font-size: 32px;
+  margin: 10px 0;
 }
 
-
-.project-card {
-background: var(--card);
-padding: 20px;
-border-radius: 10px;
-cursor: pointer;
-transition: transform 0.2s;
+.badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
-
-.project-card:hover {
-transform: scale(1.05);
+.badge {
+  background: #1a2540;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #2d3b61;
+  color: #dbe8ff;
 }
 
-
-.contact-form input,
-.contact-form textarea {
-width: 100%;
-margin-bottom: 10px;
-padding: 10px;
-border-radius: 5px;
-border: none;
-background: var(--card);
-color: var(--text);
+.badge i {
+  color: #7c5cff;
 }
 
-
-.contact-form button {
-padding: 10px 20px;
-border: none;
-background: #007bff;
-color: white;
-cursor: pointer;
-border-radius: 5px;
+/* Section styles */
+section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
 }
 
-
-.footer {
-text-align: center;
-padding: 20px;
-background: var(--card);
+section h2 {
+  font-size: 26px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bcd0ff;
 }
 
+/* Experience Cards */
+.exp-card, .cert-card {
+  background: #131d32;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #1f2a45;
+  transition: 0.3s;
+}
 
-.social-icons a {
-margin: 0 10px;
-color: var(--text);
-text-decoration: none;
+.exp-card:hover, .cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.duration {
+  font-size: 12px;
+  color: #9aa6b2;
+}
+
+/* Contact */
+.contact p {
+  font-size: 15px;
+  margin: 6px 0;
+}
+
+.contact i {
+  width: 20px;
+  color: #7c5cff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 26px; }
+  section h2 { font-size: 22px; }
 }
