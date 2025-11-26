@@ -1,114 +1,291 @@
-/* ==========================
-   Mazhar Ali Portfolio CSS
-   ========================== */
+/* ==============================
+   Enhanced UI — Animations, Glass, 3D tilt, Theme, Mobile
+   (Drop this into your styles.css)
+   ============================== */
 
-/* Global */
-body {
-  margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
-  background: #0f1724;
-  color: white;
-  line-height: 1.6;
+/* -----------------------
+   Theme variables
+   ----------------------- */
+:root{
+  /* dark theme (defaults) */
+  --bg: #0f1724;
+  --panel: rgba(18,28,48,0.72); /* glass background */
+  --panel-border: rgba(255,255,255,0.06);
+  --muted: #9aa6b2;
+  --accent: #7c5cff;
+  --card-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  --glass-blur: 10px;
+  --glass-highlight: rgba(255,255,255,0.03);
+  --text: #eaf2ff;
 }
 
-a { color: #7c5cff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Auto-detect system preference: light */
+@media (prefers-color-scheme: light) {
+  :root{
+    --bg: #f4f7ff;
+    --panel: rgba(255,255,255,0.7);
+    --panel-border: rgba(15,23,36,0.06);
+    --muted: #4b5563;
+    --accent: #4b39ff;
+    --card-shadow: 0 8px 30px rgba(15,23,36,0.08);
+    --glass-blur: 6px;
+    --glass-highlight: rgba(0,0,0,0.02);
+    --text: #0f1724;
+  }
+}
 
-/* Hero Section */
+/* Manual override with .light-theme class (JS toggles this) */
+.light-theme {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* -----------------------
+   Global page rules
+   ----------------------- */
+body{
+  background: linear-gradient(180deg,var(--bg), color-mix(in srgb, var(--bg) 75%, black 10%));
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background .35s ease, color .35s ease;
+}
+
+/* make panels glassy / neo-morphic */
+.panel {
+  background: linear-gradient(180deg, var(--panel), color-mix(in srgb,var(--panel) 70%, black 5%));
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+}
+
+/* subtle inner highlight for neo-morphism */
+.panel::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 0 var(--glass-highlight);
+  z-index: 0;
+}
+
+/* -----------------------
+   Hero / avatar placeholder (glass)
+   ----------------------- */
+.header-hero,
 .hero {
-  padding: 60px 20px;
-  text-align: center;
-  background: linear-gradient(180deg, #0f1724, #101b33);
+  position: relative;
+  overflow: visible;
 }
 
-.avatar {
+.avatar-placeholder{
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #7c5cff;
-  margin-bottom: 20px;
-  box-shadow: 0 0 12px #7c5cffaa;
+  display:inline-grid;
+  place-items:center;
+  font-size:44px;
+  color: var(--accent);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 8px 30px rgba(12,18,30,0.45), inset 0 -6px 18px rgba(255,255,255,0.02);
+  margin: 0 auto 18px;
+  position: relative;
+  z-index: 3;
 }
 
-.hero h1 {
-  font-size: 32px;
-  margin: 10px 0;
+/* small glow ring */
+.avatar-placeholder::before{
+  content: '';
+  position:absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, color-mix(in srgb,var(--accent) 30%, transparent) 0%, transparent 40%);
+  filter: blur(8px);
+  opacity: .55;
+  z-index:-1;
 }
 
-.badges {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 12px;
+/* -----------------------
+   Reveal / Scroll Animations
+   (CSS side — JS should add .is-visible when in viewport)
+   Apply .reveal to elements you want animated.
+   ----------------------- */
+.reveal{
+  opacity: 0;
+  transform: translateY(12px) scale(.995);
+  transition: opacity .6s cubic-bezier(.2,.9,.1,1), transform .6s cubic-bezier(.2,.9,.1,1);
+  will-change: opacity, transform;
+  pointer-events: auto;
 }
 
-.badge {
-  background: #1a2540;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid #2d3b61;
-  color: #dbe8ff;
+/* Visible states — choose one of the utility classes below: */
+.reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* Fade-in */
+.reveal.fade { transform: translateY(0) scale(1); }
+.reveal.fade.is-visible { animation: fadeIn .64s both; }
+
+/* Slide-up */
+.reveal.up { transform: translateY(18px); }
+.reveal.up.is-visible { animation: slideUp .64s cubic-bezier(.2,.9,.1,1) both; }
+
+/* Zoom-in */
+.reveal.zoom { transform: scale(.96); }
+.reveal.zoom.is-visible { animation: zoomIn .6s cubic-bezier(.2,.9,.1,1) both; }
+
+/* Stagger helper (apply to container to delay children) */
+.reveal-stagger > * { transition-delay: 0s; }
+.reveal-stagger > *.is-visible { transition-delay: var(--stagger, 80ms); }
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px) scale(.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(.92); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-.badge i {
-  color: #7c5cff;
+/* -----------------------
+   Projects grid & 3D tilt hover
+   ----------------------- */
+.project-grid {
+  perspective: 1200px; /* allows 3D tilt */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
 }
 
-/* Section styles */
-section {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-section h2 {
-  font-size: 26px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #bcd0ff;
-}
-
-/* Experience Cards */
-.exp-card, .cert-card {
-  background: #131d32;
-  padding: 20px;
+/* card base (neo-morphic glass) */
+.project-card {
+  position: relative;
+  padding: 18px;
   border-radius: 12px;
-  margin-bottom: 16px;
-  border: 1px solid #1f2a45;
-  transition: 0.3s;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform .32s cubic-bezier(.18,.9,.32,1), box-shadow .32s ease, filter .28s ease;
+  background: linear-gradient(180deg, color-mix(in srgb,var(--panel) 90%, black 2%), var(--panel));
+  border: 1px solid color-mix(in srgb, var(--panel-border) 70%, transparent);
+  min-height: 140px;
 }
 
-.exp-card:hover, .cert-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+/* subtle layered depth */
+.project-card::before{
+  content: '';
+  position:absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 10% 10%, color-mix(in srgb,var(--accent) 14%, transparent) 0%, transparent 16%),
+              linear-gradient(180deg, rgba(0,0,0,0.06), transparent 30%);
+  opacity: .06;
+  z-index:0;
+  transform: translateZ(-1px) scale(1.02);
+  pointer-events:none;
 }
 
-.duration {
-  font-size: 12px;
-  color: #9aa6b2;
+/* title and text above the pseudo layers */
+.project-card > * { position: relative; z-index: 2; }
+
+/* 3D tilt on hover (desktop) */
+@media (hover: hover) and (pointer: fine){
+  .project-card:hover {
+    transform: rotateX(6deg) rotateY(-6deg) translateY(-6px) translateZ(4px);
+    box-shadow: 0 18px 40px rgba(2,8,30,0.62);
+    filter: saturate(1.03);
+  }
+  /* stronger tilt on focus (keyboard) */
+  .project-card:focus-within, .project-card:focus {
+    transform: rotateX(3deg) rotateY(-3deg) translateY(-4px) translateZ(2px);
+    outline: none;
+    box-shadow: 0 12px 28px rgba(2,8,30,0.4);
+  }
 }
 
-/* Contact */
-.contact p {
-  font-size: 15px;
-  margin: 6px 0;
+/* micro animation for links inside card */
+.project-link {
+  display:inline-block;
+  margin-top:12px;
+  font-weight:600;
+  color: var(--accent);
+  text-decoration:none;
+  transition: transform .18s ease, color .18s ease;
+}
+.project-link:hover {
+  transform: translateY(-3px);
+  text-decoration: underline;
 }
 
-.contact i {
-  width: 20px;
-  color: #7c5cff;
+/* -----------------------
+   Glassy / Neo-morphism utilities
+   ----------------------- */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.5);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .hero h1 { font-size: 26px; }
-  section h2 { font-size: 22px; }
+/* -----------------------
+   Button polish
+   ----------------------- */
+.btn-cv, .btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: transform .16s ease, box-shadow .16s ease;
 }
+.btn-cv:active, .btn-toggle:active { transform: translateY(1px) scale(.998); }
+
+/* -----------------------
+   Accessibility & focus states
+   ----------------------- */
+button:focus, a:focus, .project-card:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  outline-offset: 4px;
+}
+
+/* -----------------------
+   Mobile improvements
+   ----------------------- */
+@media (max-width: 900px){
+  .project-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .avatar-placeholder { width: 96px; height: 96px; font-size:36px; }
+  .hero { padding: 36px 14px; }
+  section { padding: 28px 14px; max-width: 760px; }
+}
+
+/* touch-friendly buttons and spacing */
+@media (max-width: 480px){
+  .project-grid { grid-template-columns: 1fr; gap: 12px; }
+  .project-card { padding: 16px; min-height: 120px; border-radius: 10px; }
+  .btn-cv, .btn-toggle { padding: 12px 16px; font-size: 15px; }
+  .badges { gap: 8px; }
+}
+
+/* -----------------------
+   Small decorative helpers
+   ----------------------- */
+.glow {
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* -----------------------
+   Notes (read-only, not CSS):
+   - To trigger scroll animations add the class .reveal and when the element
+     enters the viewport add .is-visible (small JS IntersectionObserver).
+   - Light theme can be toggled by adding/removing the .light-theme class on <body>.
+   ----------------------- */
