@@ -1,55 +1,55 @@
-<!DOCTYPE html>
-<html>
+<!-- HTML structure for Mazhar Ali Portfolio with FontAwesome Icons -->
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Mazhar Portfolio</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mazhar Ali — Portfolio</title>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div class="nav">
-<a href="#hero">Home</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-<button id="themeToggle">🌙</button>
-</div>
+  <header class="hero">
+    <div class="hero-text">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" class="avatar" />
+      <h1><i class="fa-solid fa-user-robot"></i> Mazhar Ali</h1>
+      <p>AI Engineer · Web Developer · Data Analyst</p>
+      <div class="badges"></div>
+    </div>
+  </header>
 
+  <section class="about">
+    <h2><i class="fa-solid fa-id-badge"></i> Profile</h2>
+    <p>AI Engineer with expertise in ML, deep learning, NLP, computer vision, and MLOps.</p>
+  </section>
 
-<section id="hero" class="hero">
-<div class="hero-content">
-<h1>Mazhar Ali</h1>
-<h3>AI/ML Engineer • Big Data • Edge AI</h3>
-</div>
-</section>
+  <section class="experience" id="experience"></section>
 
+  <section class="education">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+    <p><strong>Bachelor in Computer Science</strong> — University of Sindh (2015–2018)</p>
+  </section>
 
-<section id="projects" class="section">
-<h2>Projects</h2>
-<div id="projectContainer"></div>
-</section>
+  <section class="certifications">
+    <h2><i class="fa-solid fa-award"></i> Certifications</h2>
+    <div class="cert-card">
+      <h3>Artificial Intelligence & Robotics</h3>
+      <span class="duration">Sep 2020 – Mar 2021</span>
+      <p>Covers robotics, motion planning, RL, and real-time AI systems.</p>
+    </div>
+  </section>
 
+  <section class="contact">
+    <h2><i class="fa-solid fa-envelope"></i> Contact</h2>
+    <p><i class="fa-solid fa-at"></i> Email: <a href="mailto:mazhara94@yahoo.com">mazhara94@yahoo.com</a></p>
+    <p><i class="fa-solid fa-phone"></i> Phone: +923335853751</p>
+    <p><i class="fa-brands fa-github"></i> GitHub: <a href="https://github.com/Mazhar113">github.com/Mazhar113</a></p>
+    <p><i class="fa-brands fa-linkedin"></i> LinkedIn: <a href="https://linkedin.com/in/mazhar-ali-939453282">linkedin.com/in/mazhar-ali</a></p>
+  </section>
 
-<section id="contact" class="section">
-<h2>Contact Me</h2>
-<form class="contact-form" action="https://formspree.io/f/mkgnwbwl" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Your Message" required></textarea>
-<button type="submit">Send</button>
-</form>
-</section>
-
-
-<footer class="footer">
-<p>© 2025 Mazhar Ali</p>
-<div class="social-icons">
-<a href="https://github.com/Mazhar113" target="_blank">GitHub</a>
-<a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-<a href="mailto:mazhara94@yahoo.com">Email</a>
-</div>
-</footer>
-
-
-<div id="cursor"></div>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
