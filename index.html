@@ -3,89 +3,64 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Mazhar Ali — Portfolio (Single File)</title>
+<title>Mazhar Ali — Portfolio</title>
 <meta name="description" content="Portfolio of Mazhar Ali — AI Engineer, Web Developer, Data Analyst" />
-<!-- =========================
-     All styles embedded (glass, animations, 3D tilt, responsive, theme)
-     ========================= -->
 <style>
+/* ---------------------------
+   Single-file optimized CSS
+   No external dependencies
+   --------------------------- */
 :root{
-  --bg:#0f1724;
-  --panel:rgba(18,28,48,0.72);
-  --panel-border:rgba(255,255,255,0.06);
-  --muted:#9aa6b2;
-  --accent:#7c5cff;
-  --card-shadow:0 8px 30px rgba(2,6,23,0.6);
-  --glass-blur:10px;
-  --text:#eaf2ff;
-  --radius:12px;
-  --max-width:1100px;
-  --gap:18px;
-  font-synthesis: none;
+  --bg:#0f1724; --panel:rgba(18,28,48,0.78); --panel-border:rgba(255,255,255,0.06);
+  --muted:#9aa6b2; --accent:#7c5cff; --accent-2:#6f4cff;
+  --card-shadow:0 10px 30px rgba(2,6,23,0.6); --glass-blur:10px; --text:#eaf2ff;
+  --radius:12px; --maxw:1100px;
 }
 @media (prefers-color-scheme: light) {
   :root{
-    --bg:#f4f7ff;
-    --panel:rgba(255,255,255,0.72);
-    --panel-border:rgba(15,23,36,0.06);
-    --muted:#4b5563;
-    --accent:#4b39ff;
-    --card-shadow:0 8px 30px rgba(15,23,36,0.08);
-    --glass-blur:6px;
-    --text:#0f1724;
+    --bg:#f4f7ff; --panel:rgba(255,255,255,0.86); --panel-border:rgba(15,23,36,0.06);
+    --muted:#4b5563; --accent:#4b39ff; --card-shadow:0 10px 30px rgba(15,23,36,0.08); --glass-blur:6px; --text:#0f1724;
   }
 }
-
-/* Reset & base */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; -webkit-font-smoothing:antialiased}
 body{
-  background:linear-gradient(180deg,var(--bg), color-mix(in srgb,var(--bg) 70%, black 6%));
-  color:var(--text);
-  transition:background .35s ease, color .35s ease;
-  line-height:1.5;
+  background:linear-gradient(180deg,var(--bg), color-mix(in srgb,var(--bg) 75%, black 6%));
+  color:var(--text); transition:background .32s ease,color .32s ease;
+  line-height:1.5; padding:22px;
 }
-
-/* container */
-.container{max-width:var(--max-width);margin:28px auto;padding:18px;}
+.container{max-width:var(--maxw);margin:0 auto;}
 
 /* header */
-.header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.hero-left{display:flex;flex-direction:column;gap:8px;flex:1}
-.hero-title{font-size:22px;margin:0;font-weight:700}
-.hero-sub{color:var(--muted);font-size:13px;margin-top:4px}
+.header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.left{flex:1}
+.title{font-size:22px;margin:0;font-weight:700}
+.subtitle{color:var(--muted);margin-top:6px;font-size:13px}
 
 /* badges */
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.badge{
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;font-size:13px;
   background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 92%, black 2%), var(--panel));
-  padding:8px 12px;border-radius:999px;font-size:13px;color:var(--text);
-  border:1px solid var(--panel-border);display:inline-flex;align-items:center;gap:8px;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.28);
+  border:1px solid var(--panel-border); color:var(--text); box-shadow:0 6px 18px rgba(2,6,23,0.28);
 }
-.badge svg{width:16px;height:16px;flex-shrink:0;opacity:.98}
 
-/* social links row */
-.socials{display:flex;gap:10px;align-items:center;margin-top:10px}
-.social-link{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--panel);border:1px solid var(--panel-border);text-decoration:none;color:var(--text);font-weight:600}
+/* socials */
+.socials{display:flex;gap:10px;margin-top:12px}
+.social{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--panel);border:1px solid var(--panel-border);
+  text-decoration:none;color:var(--text);font-weight:600;font-size:13px}
 
 /* top actions */
-.top-actions{display:flex;align-items:center;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+.actions{display:flex;align-items:center;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
 .btn-cv{background:var(--accent);color:#081226;text-decoration:none}
-.btn-toggle{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:var(--text);border:1px solid var(--panel-border);padding:9px 12px}
+.btn-toggle{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--panel-border);color:var(--text)}
 
-/* panels and sections */
-.section{margin-top:20px}
+/* panels */
+.section{margin-top:22px}
 .panel{
   background:linear-gradient(180deg,var(--panel), color-mix(in srgb,var(--panel) 70%, black 3%));
-  border:1px solid var(--panel-border);
-  border-radius:var(--radius);
-  padding:16px;
-  box-shadow:var(--card-shadow);
-  backdrop-filter: blur(var(--glass-blur));
-  position:relative;
-  transition:transform .28s ease, box-shadow .28s ease;
+  border-radius:var(--radius); border:1px solid var(--panel-border); padding:16px; box-shadow:var(--card-shadow);
+  backdrop-filter:blur(var(--glass-blur)); transition:transform .28s ease, box-shadow .28s ease;
 }
 .section h2{margin:0 0 12px;font-size:18px;color:color-mix(in srgb,var(--text) 85%, transparent);display:flex;align-items:center;gap:10px}
 
@@ -95,11 +70,10 @@ body{
 .exp-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,8,30,0.48)}
 .duration{font-size:12px;color:var(--muted);margin-top:8px}
 
-/* certifications */
-.cert-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 95%, black 2%), var(--panel));border:1px solid var(--panel-border);margin-bottom:10px}
+/* certs */
+.cert-card{padding:12px;border-radius:10px;margin-bottom:10px}
 
-/* projects grid + 3D tilt */
-.projects-wrap{margin-top:6px}
+/* projects */
 .project-grid{perspective:1200px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
 .project-card{
   position:relative;padding:16px;border-radius:12px;min-height:140px;overflow:hidden;transform-style:preserve-3d;
@@ -112,123 +86,87 @@ body{
 .project-card:hover{transform:rotateX(6deg) rotateY(-6deg) translateY(-6px) translateZ(4px);box-shadow:0 18px 40px rgba(2,8,30,0.62)}
 .project-link{display:inline-block;margin-top:10px;color:var(--accent);font-weight:600;text-decoration:none}
 
-/* reveal animations */
-.reveal{opacity:0;transform:translateY(12px) scale(.995);transition:opacity .6s cubic-bezier(.2,.9,.1,1), transform .6s}
+/* reveal animation utility (JS toggles .is-visible) */
+.reveal{opacity:0;transform:translateY(12px) scale(.995);transition:opacity .6s cubic-bezier(.2,.9,.1,1),transform .6s}
 .reveal.is-visible{opacity:1;transform:translateY(0) scale(1)}
-.reveal.up{transform:translateY(18px)}
-.reveal.zoom{transform:scale(.96)}
-.reveal.fade{transform:translateY(0) scale(1)}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px) scale(.995)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-/* small utilities */
-.flex{display:flex;gap:12px;align-items:center}
-.center{display:flex;align-items:center;justify-content:center}
-
-/* focus */
-:focus{outline-offset:4px}
-.project-card:focus{outline:3px solid color-mix(in srgb,var(--accent) 18%, transparent);}
 
 /* responsive */
-@media (max-width:900px){
-  .project-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-  .hero-title{font-size:18px}
-}
-@media (max-width:480px){
-  .project-grid{grid-template-columns:1fr}
-  .exp-grid{grid-template-columns:1fr}
-  .top-actions{justify-content:center;gap:8px}
-  .header{gap:10px}
-}
+@media (max-width:900px){ .project-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));} .title{font-size:18px} }
+@media (max-width:480px){ .project-grid{grid-template-columns:1fr} .exp-grid{grid-template-columns:1fr} .actions{justify-content:center} .header{gap:10px} }
 
-/* explicit light class */
-.light-theme{
-  background:var(--bg);
-  color:var(--text);
-}
-.light-theme .panel,
-.light-theme .badge,
-.light-theme .project-card,
-.light-theme .exp-card{ background:#ffffff; color:var(--text); border-color:color-mix(in srgb,var(--panel-border) 70%, transparent) }
+/* accessibility */
+:focus{outline-offset:4px} .project-card:focus{outline:3px solid color-mix(in srgb,var(--accent) 18%, transparent);}
+
+/* small helper */
+.lead{color:var(--muted)}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container" role="main">
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="left">
+      <h1 class="title">Mazhar Ali</h1>
+      <div class="subtitle">AI Engineer · Web Developer · Data Analyst</div>
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="hero-left">
-      <div>
-        <h1 class="hero-title">Mazhar Ali</h1>
-        <div class="hero-sub">AI Engineer · Web Developer · Data Analyst</div>
-
-        <!-- Skill badges -->
-        <div class="badges" id="badges" aria-hidden="false"></div>
-
-        <!-- Social badges -->
-        <div class="socials" id="socials" aria-hidden="false" style="margin-top:10px"></div>
-      </div>
+      <div class="badges" id="badges" aria-hidden="false"></div>
+      <div class="socials" id="socials" aria-hidden="false"></div>
     </div>
 
-    <!-- top actions (theme + CV) -->
-    <div class="top-actions">
-      <button id="themeToggle" class="btn btn-toggle" aria-pressed="false" title="Toggle theme" aria-label="Toggle theme">
-        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
+    <div class="actions" aria-hidden="false">
+      <button id="themeToggle" class="btn btn-toggle" aria-pressed="false" title="Toggle light / dark theme" aria-label="Toggle theme">
+        <!-- initial moon icon; JS will swap -->
+        <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
       </button>
-
-      <a id="downloadCv" class="btn btn-cv" href="Mazhar_Ali_CV.pdf" download aria-label="Download CV">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:middle"><path d="M12 3v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="17" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
-        Download CV
-      </a>
+      <a id="downloadCv" class="btn btn-cv" href="Mazhar_Ali_CV.pdf" download aria-label="Download CV">Download CV</a>
     </div>
-  </div>
+  </header>
 
-  <!-- PROFILE -->
-  <section class="section panel reveal up" id="profile">
-    <h2>Profile</h2>
-    <p style="margin:0;color:var(--muted)">AI Engineer experienced in ML, deep learning, NLP, computer vision and MLOps. Skilled with Python, TensorFlow, PyTorch, OpenCV, YOLOv8 and deploying models at scale.</p>
+  <!-- Profile -->
+  <section id="profile" class="section panel reveal" aria-labelledby="profile-h">
+    <h2 id="profile-h">Profile</h2>
+    <p class="lead">AI Engineer experienced in machine learning, deep learning, NLP, computer vision and MLOps. Skilled with Python, TensorFlow, PyTorch, OpenCV, YOLOv8 and deploying models at scale.</p>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section class="section panel reveal up" id="experience">
-    <h2>Experience</h2>
+  <!-- Experience -->
+  <section id="experience" class="section panel reveal" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
     <div class="exp-grid" id="expGrid" aria-live="polite"></div>
   </section>
 
-  <!-- CERTIFICATIONS -->
-  <section class="section panel reveal up" id="certifications">
-    <h2>Certifications</h2>
-    <div id="certList"></div>
+  <!-- Certifications -->
+  <section id="certifications" class="section panel reveal" aria-labelledby="cert-h">
+    <h2 id="cert-h">Certifications</h2>
+    <div id="certList" aria-live="polite"></div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="section panel reveal up" id="projects">
-    <h2>Projects</h2>
-    <div class="projects-wrap">
-      <div class="project-grid" id="projectGrid" aria-live="polite"></div>
-    </div>
+  <!-- Projects -->
+  <section id="projects" class="section panel reveal" aria-labelledby="proj-h">
+    <h2 id="proj-h">Projects</h2>
+    <div class="project-grid" id="projectGrid" aria-live="polite"></div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section panel reveal up" id="contact">
-    <h2>Contact</h2>
-    <div style="color:var(--muted)">Email: <a href="mailto:mazhara94@yahoo.com">mazhara94@yahoo.com</a> · WhatsApp: <a href="https://wa.me/923335853751" target="_blank" rel="noreferrer">+92 333 5853751</a></div>
+  <!-- Contact -->
+  <section id="contact" class="section panel reveal" aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact</h2>
+    <div class="lead">Email: <a href="mailto:mazhara94@yahoo.com">mazhara94@yahoo.com</a> · WhatsApp: <a href="https://wa.me/923335853751" target="_blank" rel="noreferrer">+92 333 5853751</a></div>
     <div style="height:8px"></div>
     <div style="display:flex;gap:10px;margin-top:6px">
       <a href="https://github.com/Mazhar113" target="_blank" rel="noreferrer">GitHub</a>
       <a href="https://linkedin.com/in/mazhar-ali-939453282" target="_blank" rel="noreferrer">LinkedIn</a>
     </div>
   </section>
-
 </div>
 
-<!-- =========================
-     Embedded JS: data + rendering + behavior
-     ========================= -->
 <script>
-/* ---------- Data ---------- */
-/* 13 project URLs provided by you (mapped to human-friendly titles) */
+/* ---------------------------
+   Self-contained optimized JS
+   Defensive: never crashes the page
+   Minimal DOM reflows: use DocumentFragment
+   --------------------------- */
+(function(){ 'use strict';
+
+/* ---------- Data (from you) ---------- */
 const PROJECTS = [
   { title: "SignLink", url: "https://github.com/Mazhar113/SignLink", desc: "Sign language / link utility project." },
   { title: "Wildlife Trap AI", url: "https://github.com/Mazhar113/wildlife-trap-ai", desc: "YOLO/vision based wildlife trap detection." },
@@ -245,171 +183,202 @@ const PROJECTS = [
   { title: "AI SaaS Dashboard (React + FastAPI)", url: "https://github.com/Mazhar113/AI-SaaS-Dashboard-React-FastAPI-Modern-Full-Stack-AI-Web-Application", desc: "Full-stack AI SaaS dashboard with React & FastAPI." }
 ];
 
-/* Skills & tech badges (added Docker, Kafka, YOLOv8 etc.) */
 const SKILLS = [
-  'Python','Machine Learning','Deep Learning','NLP','Computer Vision','YOLOv8',
-  'OpenCV','SQL','Node.js','HTML/CSS/JS','APIs','Docker','Apache Kafka','FastAPI',
-  'TensorRT','Kubernetes','Redis','RabbitMQ','Linux','Git/GitHub','CI/CD'
+  'Python','Machine Learning','Deep Learning','NLP','Computer Vision','YOLOv8','OpenCV','SQL','Node.js',
+  'HTML/CSS/JS','APIs','Docker','Apache Kafka','FastAPI','TensorRT','Kubernetes','Redis','RabbitMQ','Linux','Git/GitHub','CI/CD'
 ];
 
-/* Social accounts */
 const SOCIALS = [
   { name: 'GitHub', url: 'https://github.com/Mazhar113', label: 'GitHub' },
   { name: 'LinkedIn', url: 'https://linkedin.com/in/mazhar-ali-939453282', label: 'LinkedIn' },
   { name: 'WhatsApp', url: 'https://wa.me/923335853751', label: 'WhatsApp' }
 ];
 
-/* Experiences (from your CV) */
 const EXPERIENCES = [
-  { title: "IT Administrator", company: "ZKB Engineers & Constructors", duration: "08/2024 – Present | Karachi", description: "Managed systems, servers, networks; implemented backups and automation; reduced downtime by 25%." },
-  { title: "Web Programmer", company: "Thardeep Rural Development Program (NGO)", duration: "03/2023 – 07/2023", description: "Built responsive web apps (HTML/CSS/JS, React, PHP); improved UX and site speed." },
-  { title: "Data Analyst", company: "Hyperlink Info System", duration: "10/2019 – 11/2020", description: "Delivered dashboards & automated reports using SQL & Python; improved decisions by 35%." },
-  { title: "Python Developer", company: "Blessing Institute of Paramedics", duration: "02/2019 – 08/2019 | Hyderabad", description: "Developed Python apps, APIs and automation; cut processing time by ~40%." }
+  { title:"IT Administrator", company:"ZKB Engineers & Constructors", duration:"08/2024 – Present | Karachi", description:"Managed systems, servers, networks; implemented backups and automation; reduced downtime by 25%." },
+  { title:"Web Programmer", company:"Thardeep Rural Development Program (NGO)", duration:"03/2023 – 07/2023", description:"Built responsive web apps (HTML/CSS/JS, React, PHP); improved UX and site speed." },
+  { title:"Data Analyst", company:"Hyperlink Info System", duration:"10/2019 – 11/2020", description:"Delivered dashboards & automated reports using SQL & Python; improved decisions by 35%." },
+  { title:"Python Developer", company:"Blessing Institute of Paramedics", duration:"02/2019 – 08/2019 | Hyderabad", description:"Developed Python apps, APIs and automation; cut processing time by ~40%." }
 ];
 
-/* Certifications (includes NAVTTC) */
 const CERTS = [
-  { title: "Artificial Intelligence & Robotics", when: "Sep 2020 – Mar 2021", org: "Robotics, reinforcement learning, motion planning & computer vision" },
-  { title: "National Vocational and Technical Training Commission (NAVTTC)", when: "Completed", org: "National vocational & technical certification (Pakistan)" }
+  { title:"Artificial Intelligence & Robotics", when:"Sep 2020 – Mar 2021", org:"Robotics, RL, motion planning & computer vision" },
+  { title:"National Vocational and Technical Training Commission (NAVTTC)", when:"Completed", org:"National vocational & technical certification (Pakistan)" }
 ];
 
-/* ---------- Small SVG helpers (keeps icons local, no CDN) ---------- */
-function svgDot(){ return `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>`; }
+/* ---------- tiny SVG helpers (inline icons) ---------- */
+function svgDot(){ return `<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>`; }
 function svgSocial(name){
-  if(name === 'GitHub') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.16 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.61-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.54 2.36 1.1 2.93.84.09-.65.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.338 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.59.69.49A10.013 10.013 0 0022 12c0-5.52-4.48-10-10-10z" fill="currentColor"/></svg>`; }
-  if(name === 'LinkedIn') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.08 1 2.48 1 4.98 2.1 4.98 3.5zM0 24V7h5v17H0zM7 7h4.7v2.3h.1c.66-1.2 2.28-2.3 4.7-2.3C22.7 7 24 9.1 24 13.3V24h-5v-9.2c0-2.2-.04-5-3.06-5-3.07 0-3.54 2.4-3.54 4.9V24H7z" fill="currentColor"/></svg>`; 
-  if(name === 'WhatsApp') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0012 1a11.1 11.1 0 00-9 15.7L1 23l6.5-1.7A11 11 0 0020.5 3.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M8.9 7.9c-.1-.2-.2-.4-.3-.5-.2-.3-.6-.3-.9-.3-.2 0-.4 0-.6.1-.3.1-.7.4-.9.7-.3.5-.6 1.1-.6 1.8 0 1.1.6 2.1 1.5 3 .9.9 2 1.4 3.1 1.4.6 0 1.1-.1 1.5-.4.4-.2.8-.5 1-.9.1-.3.2-.6.2-.9 0-.2-.1-.5-.2-.7-.2-.4-.6-.6-1.1-.6-.3 0-.7.1-1 .3-.3.1-.6.4-.9.6-.2.2-.5.3-.8.3-.3 0-.6-.1-.9-.3-.3-.2-.6-.5-.8-.8-.1-.1-.1-.2-.1-.3 0-.2.1-.4.2-.5.1-.2.3-.3.5-.4.2-.1.4-.1.6 0 .2.1.4.2.6.3.1.1.3.2.4.2.2 0 .4-.1.5-.3.1-.2.1-.4 0-.7z" fill="currentColor"/></svg>`; }
+  if(name==='GitHub') return `<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.16 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.61-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.54 2.36 1.1 2.93.84.09-.65.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.338 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.59.69.49A10.013 10.013 0 0022 12c0-5.52-4.48-10-10-10z" fill="currentColor"/></svg>`; }
+  if(name==='LinkedIn') return `<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.08 1 2.48 1 4.98 2.1 4.98 3.5zM0 24V7h5v17H0zM7 7h4.7v2.3h.1c.66-1.2 2.28-2.3 4.7-2.3C22.7 7 24 9.1 24 13.3V24h-5v-9.2c0-2.2-.04-5-3.06-5-3.07 0-3.54 2.4-3.54 4.9V24H7z" fill="currentColor"/></svg>`; }
+  if(name==='WhatsApp') return `<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0012 1a11.1 11.1 0 00-9 15.7L1 23l6.5-1.7A11 11 0 0020.5 3.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M8.9 7.9c-.1-.2-.2-.4-.3-.5-.2-.3-.6-.3-.9-.3-.2 0-.4 0-.6.1-.3.1-.7.4-.9.7-.3.5-.6 1.1-.6 1.8 0 1.1.6 2.1 1.5 3 .9.9 2 1.4 3.1 1.4.6 0 1.1-.1 1.5-.4.4-.2.8-.5 1-.9.1-.3.2-.6.2-.9 0-.2-.1-.5-.2-.7-.2-.4-.6-.6-1.1-.6-.3 0-.7.1-1 .3-.3.1-.6.4-.9.6-.2.2-.5.3-.8.3-.3 0-.6-.1-.9-.3-.3-.2-.6-.5-.8-.8-.1-.1-.1-.2-.1-.3 0-.2.1-.4.2-.5.1-.2.3-.3.5-.4.2-.1.4-.1.6 0 .2.1.4.2.6.3.1.1.3.2.4.2.2 0 .4-.1.5-.3.1-.2.1-.4 0-.7z" fill="currentColor"/></svg>`; }
   return `<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>`;
 }
 
-/* ---------- Render skill badges ---------- */
-const badgesRoot = document.getElementById('badges');
-SKILLS.forEach(name => {
-  const el = document.createElement('div');
-  el.className = 'badge reveal fade';
-  el.innerHTML = `${svgDot()}<span style="font-size:13px">${name}</span>`;
-  badgesRoot.appendChild(el);
-});
+/* ---------- Helpers ---------- */
+function mk(tag, cls, html){
+  const el = document.createElement(tag);
+  if(cls) el.className = cls;
+  if(html !== undefined) el.innerHTML = html;
+  return el;
+}
 
-/* ---------- Render social badges ---------- */
-const socialsRoot = document.getElementById('socials');
-SOCIALS.forEach(s => {
-  const a = document.createElement('a');
-  a.className = 'social-link reveal fade';
-  a.href = s.url;
-  a.target = '_blank';
-  a.rel = 'noreferrer';
-  a.innerHTML = `${svgSocial(s.name)}<span style="font-size:13px">${s.label}</span>`;
-  socialsRoot.appendChild(a);
-});
+/* ---------- Render badges (fragment) ---------- */
+function renderBadges(rootId, items){
+  const root = document.getElementById(rootId);
+  if(!root) return;
+  const frag = document.createDocumentFragment();
+  for(const name of items){
+    const div = mk('div','badge');
+    div.innerHTML = `${svgDot()}<span style="font-size:13px">${name}</span>`;
+    div.setAttribute('title', name);
+    div.classList.add('reveal');
+    frag.appendChild(div);
+  }
+  root.appendChild(frag);
+}
+
+/* ---------- Render social buttons ---------- */
+function renderSocials(rootId, list){
+  const root = document.getElementById(rootId);
+  if(!root) return;
+  const frag = document.createDocumentFragment();
+  for(const s of list){
+    const a = mk('a','social');
+    a.href = s.url; a.target = '_blank'; a.rel = 'noreferrer';
+    a.innerHTML = `${svgSocial(s.label)}<span>${s.label}</span>`;
+    a.classList.add('reveal');
+    frag.appendChild(a);
+  }
+  root.appendChild(frag);
+}
 
 /* ---------- Render experiences ---------- */
-const expGrid = document.getElementById('expGrid');
-EXPERIENCES.forEach(exp => {
-  const card = document.createElement('div');
-  card.className = 'exp-card reveal up';
-  card.innerHTML = `<strong>${exp.title}</strong><div style="font-size:13px;color:var(--muted)">${exp.company}</div><div class="duration">${exp.duration}</div><p style="margin-top:8px;color:var(--muted)">${exp.description}</p>`;
-  expGrid.appendChild(card);
-});
+function renderExperiences(rootId, items){
+  const root = document.getElementById(rootId);
+  if(!root) return;
+  const frag = document.createDocumentFragment();
+  for(const e of items){
+    const c = mk('div','exp-card reveal');
+    c.innerHTML = `<strong>${e.title}</strong><div style="font-size:13px;color:var(--muted)">${e.company}</div><div class="duration">${e.duration}</div><p style="margin-top:8px;color:var(--muted)">${e.description}</p>`;
+    frag.appendChild(c);
+  }
+  root.appendChild(frag);
+}
 
-/* ---------- Render certifications (NAVTTC included) ---------- */
-const certList = document.getElementById('certList');
-CERTS.forEach(c => {
-  const el = document.createElement('div');
-  el.className = 'cert-card reveal fade';
-  el.innerHTML = `<strong>${c.title}</strong><div class="duration">${c.when}</div><div style="margin-top:6px;color:var(--muted)">${c.org}</div>`;
-  certList.appendChild(el);
-});
+/* ---------- Render certifications ---------- */
+function renderCerts(rootId, items){
+  const root = document.getElementById(rootId);
+  if(!root) return;
+  const frag = document.createDocumentFragment();
+  for(const c of items){
+    const el = mk('div','cert-card reveal');
+    el.innerHTML = `<strong>${c.title}</strong><div class="duration">${c.when}</div><div style="margin-top:6px;color:var(--muted)">${c.org}</div>`;
+    frag.appendChild(el);
+  }
+  root.appendChild(frag);
+}
 
-/* ---------- Render projects (link entire card to GitHub) ---------- */
-const projectGrid = document.getElementById('projectGrid');
-PROJECTS.forEach(p => {
-  const card = document.createElement('article');
-  card.className = 'project-card reveal zoom';
-  card.tabIndex = 0;
-  card.innerHTML = `<h3 style="margin:0 0 8px">${p.title}</h3><p style="margin:0;color:var(--muted)">${p.desc}</p><a class="project-link" href="${p.url}" target="_blank" rel="noreferrer">View on GitHub →</a>`;
-  // clicking anywhere on the card opens the GitHub repo
-  card.addEventListener('click', (e) => {
-    // if user clicked a link, let it handle normally
-    if(e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return;
-    const a = card.querySelector('a');
-    if(a) window.open(a.href, '_blank');
-  });
-  // keyboard: Enter or Space opens repo
-  card.addEventListener('keydown', (ev) => {
-    if(ev.key === 'Enter' || ev.key === ' ') {
-      ev.preventDefault();
-      const a = card.querySelector('a'); if(a) a.click();
-    }
-  });
-  projectGrid.appendChild(card);
-});
+/* ---------- Render projects (link card to repo) ---------- */
+function renderProjects(rootId, items){
+  const root = document.getElementById(rootId);
+  if(!root) return;
+  const frag = document.createDocumentFragment();
+  for(const p of items){
+    const card = mk('article','project-card reveal');
+    card.tabIndex = 0;
+    card.innerHTML = `<h3 style="margin:0 0 8px">${p.title}</h3><p style="margin:0;color:var(--muted)">${p.desc}</p><a class="project-link" href="${p.url}" target="_blank" rel="noreferrer">View on GitHub →</a>`;
+    // card click opens repo; allow link clicks to pass through
+    card.addEventListener('click', (ev) => {
+      if(ev.target && (ev.target.tagName === 'A' || ev.target.closest('a'))) return;
+      const a = card.querySelector('a'); if(a) window.open(a.href,'_blank');
+    });
+    // keyboard open
+    card.addEventListener('keydown', (ev) => {
+      if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); const a = card.querySelector('a'); if(a) a.click(); }
+    });
+    frag.appendChild(card);
+  }
+  root.appendChild(frag);
+}
 
-/* ---------- Theme toggle (auto-detect + manual) ---------- */
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-let lightMode = prefersLight;
-
-function setThemeUI() {
-  document.body.classList.toggle('light-theme', lightMode);
-  themeToggle.setAttribute('aria-pressed', String(lightMode));
-  if (lightMode) {
-    themeIcon.innerHTML = '<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.2" fill="none"></circle><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9L3.5 3.5M20.5 20.5l-1.4-1.4M4.9 19.1l-1.4 1.4M20.5 3.5l-1.4 1.4" stroke="currentColor" stroke-width="1.0" stroke-linecap="round"/>';
-  } else {
-    themeIcon.innerHTML = '<path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z" stroke="currentColor" stroke-width="1.2" fill="none"/>';
+/* ---------- IntersectionObserver for reveal animations ---------- */
+function initReveal(){
+  try{
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if(en.isIntersecting) en.target.classList.add('is-visible'); });
+    }, { threshold: 0.16 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }catch(e){
+    // If IntersectionObserver unsupported, show elements immediately
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
   }
 }
-setThemeUI();
-themeToggle.addEventListener('click', () => { lightMode = !lightMode; setThemeUI(); });
 
-/* ---------- Reveal on scroll (IntersectionObserver) ---------- */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('is-visible'); });
-}, { threshold: 0.18 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ---------- Subtle 3D tilt for project cards (pointer devices) ---------- */
-function handleTilt(e) {
-  const card = e.currentTarget;
-  const r = card.getBoundingClientRect();
-  const x = (e.clientX - r.left) / r.width;
-  const y = (e.clientY - r.top) / r.height;
-  const rotY = (x - 0.5) * 10;
-  const rotX = (0.5 - y) * 10;
-  card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(6px)`;
-}
-function resetTilt(e) { e.currentTarget.style.transform = ''; }
-if (window.matchMedia('(pointer:fine) and (hover:hover)').matches) {
-  document.querySelectorAll('.project-card').forEach(card => {
+/* ---------- 3D tilt for project cards (pointer fine devices) ---------- */
+function initTilt(){
+  if(!window.matchMedia || !window.matchMedia('(pointer:fine) and (hover:hover)').matches) return;
+  function handleTilt(e){
+    const card = e.currentTarget;
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    const rotY = (x - 0.5) * 10;
+    const rotX = (0.5 - y) * 10;
+    card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(6px)`;
+  }
+  function resetTilt(e){ e.currentTarget.style.transform = ''; }
+  document.querySelectorAll('.project-card').forEach(card=>{
     card.addEventListener('mousemove', handleTilt);
     card.addEventListener('mouseleave', resetTilt);
     card.addEventListener('blur', resetTilt);
   });
 }
 
-/* ---------- Check CV presence; hide button if missing ---------- */
-(function checkCv() {
+/* ---------- Theme toggle + auto-detect ---------- */
+(function themeSetup(){
+  const btn = document.getElementById('themeToggle'), icon = document.getElementById('themeIcon');
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  let light = prefersLight;
+  function update(){
+    document.body.classList.toggle('light-theme', light);
+    btn.setAttribute('aria-pressed', String(light));
+    icon.innerHTML = light
+      ? '<circle cx=\"12\" cy=\"12\" r=\"4\" stroke=\"currentColor\" stroke-width=\"1.2\" fill=\"none\"></circle><path d=\"M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9L3.5 3.5M20.5 20.5l-1.4-1.4\" stroke=\"currentColor\" stroke-width=\"1.0\" stroke-linecap=\"round\"/>'
+      : '<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\" stroke=\"currentColor\" stroke-width=\"1.2\" fill=\"none\"/>';
+  }
+  update();
+  btn.addEventListener('click', ()=>{ light = !light; update(); });
+})();
+
+/* ---------- Safe CV HEAD check (must not break execution) ---------- */
+(function safeCvCheck(){
   const link = document.getElementById('downloadCv');
-  if (!link) return;
-  fetch(link.getAttribute('href'), { method: 'HEAD' })
-    .then(r => { if (!r.ok) link.style.display = 'none'; })
-    .catch(() => { link.style.display = 'none'; });
+  if(!link) return;
+  // Attempt HEAD but never let failure break page
+  try{
+    fetch(link.href, { method: 'HEAD' }).then(res=>{
+      if(!res.ok) link.style.display = 'none';
+    }).catch(()=>{ /* ignore — keep UI intact */ });
+  }catch(e){ /* ignore */ }
 })();
 
-/* ---------- Small enhancement: keyboard users focus visibility ---------- */
-(function focusVisible() {
-  let mouseUsed = false;
-  window.addEventListener('mousedown', () => { mouseUsed = true; }, true);
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-      if (mouseUsed) mouseUsed = false;
-      document.documentElement.classList.add('kb');
-    }
-  }, true);
-})();
+/* ---------- Initialize content and behavior ---------- */
+function init(){
+  renderBadges('badges', SKILLS);
+  renderSocials('socials', SOCIALS);
+  renderExperiences('expGrid', EXPERIENCES);
+  renderCerts('certList', CERTS);
+  renderProjects('projectGrid', PROJECTS);
+  // allow a tick for DOM to attach project elements before tilt/reveal inits
+  requestAnimationFrame(()=>{ initReveal(); initTilt(); });
+}
 
-console.log('Final single-file portfolio loaded — 13 projects linked to GitHub.');
+/* run on DOMContentLoaded for reliability */
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+
+})(); // end IIFE
 </script>
 </body>
 </html>
