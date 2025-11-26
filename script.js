@@ -1,8 +1,8 @@
 /* ==============================
-   Mazhar Ali Portfolio - JS File
+   Mazhar Ali Portfolio - JS File (Clean Fixed Version)
    ============================== */
 
-// Skills with icons
+// ===== Skills with Icons =====
 const skills = [
   { name: "Python", icon: "fa-brands fa-python" },
   { name: "Machine Learning", icon: "fa-solid fa-brain" },
@@ -25,7 +25,7 @@ skills.forEach(skill => {
   badgeContainer.appendChild(badge);
 });
 
-// Experience data
+// ===== Experience Section =====
 const experiences = [
   {
     title: "IT Administrator",
@@ -43,17 +43,16 @@ const experiences = [
     title: "Data Analyst",
     company: "Hyperlink Info System",
     duration: "10/2019 – 11/2020",
-    description: "Delivered insights using SQL, Excel, Python. Automated reports, improving decision-making efficiency by 35%."
+    description: "Delivered insights using SQL, Python & Excel. Automated dashboards improving decision-making by 35%."
   },
   {
     title: "Python Developer",
     company: "Blessing Institute of Paramedics",
     duration: "02/2019 – 08/2019 | Hyderabad",
-    description: "Built Python apps, REST APIs, automation scripts. Reduced processing time by 40% & manual workload by 50+ hrs/month."
+    description: "Built Python apps, REST APIs, automation scripts. Reduced manual workload by 50+ hrs/month."
   }
 ];
 
-// Insert experiences dynamically
 const expContainer = document.getElementById('experience');
 expContainer.innerHTML = '<h2><i class="fa-solid fa-briefcase"></i> Experience</h2>';
 
@@ -68,7 +67,56 @@ experiences.forEach(exp => {
   expContainer.appendChild(card);
 });
 
-// Smooth scrolling for anchor links
+// ===== Projects Section =====
+const projects = [
+  {
+    title: "AI Face Recognition System",
+    desc: "Deep learning facial recognition using Python, TensorFlow & OpenCV.",
+    link: "#"
+  },
+  {
+    title: "Sales Dashboard (React + Node)",
+    desc: "Interactive charts, analytics & REST API backend.",
+    link: "#"
+  },
+  {
+    title: "E-Commerce Website",
+    desc: "Full-stack store with cart, checkout & admin panel.",
+    link: "#"
+  },
+  {
+    title: "NLP Chatbot",
+    desc: "Intent-based chatbot using NLP + ML classification.",
+    link: "#"
+  }
+];
+
+const projectGrid = document.getElementById('projectGrid');
+projects.forEach(p => {
+  const card = document.createElement('div');
+  card.classList.add('project-card');
+  card.innerHTML = `
+    <h3>${p.title}</h3>
+    <p>${p.desc}</p>
+    <a href="${p.link}" target="_blank" class="project-link">View Project</a>
+  `;
+  projectGrid.appendChild(card);
+});
+
+// ===== Theme Toggle =====
+const themeBtn = document.getElementById('themeToggle');
+let isLight = false;
+
+themeBtn.addEventListener('click', () => {
+  isLight = !isLight;
+  document.body.classList.toggle('light-theme', isLight);
+
+  themeBtn.innerHTML = isLight
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-solid fa-moon"></i>';
+});
+
+// ===== Smooth Anchor Scroll =====
 const links = document.querySelectorAll('a[href^="#"]');
 links.forEach(link => {
   link.addEventListener('click', (e) => {
