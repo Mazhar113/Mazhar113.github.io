@@ -6,7 +6,7 @@
     <title>Mazhar Ali - AI Engineer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Global Styles */
+        /* All your existing CSS styles */
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
@@ -254,12 +254,61 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 3px solid var(--secondary);
+            position: relative;
         }
 
         .profile-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .profile-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Quick Upload Section */
+        .upload-section {
+            background-color: rgba(23, 42, 70, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 1px solid var(--secondary);
+        }
+
+        .upload-instructions {
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .upload-btn:hover {
+            background-color: #2980b9;
+        }
+
+        #imageUpload {
+            display: none;
         }
 
         /* Skills Section */
@@ -612,15 +661,38 @@
                     </div>
                 </div>
                 <div class="profile-img">
-                    <!-- Placeholder for profile image -->
-                    <div style="width:100%; height:100%; background:linear-gradient(135deg, #3498db, #2c3e50); display:flex; align-items:center; justify-content:center; color:white; font-size:1.5rem;">
+                    <!-- Profile Picture Placeholder -->
+                    <div class="profile-placeholder" id="profilePlaceholder">
                         <i class="fas fa-user" style="font-size: 4rem;"></i>
+                        <p style="font-size: 0.9rem; margin-top: 10px;">Add Your Photo</p>
                     </div>
+                    <img id="profileImage" style="display: none;" alt="Mazhar Ali">
                 </div>
+            </div>
+
+            <!-- Quick Upload Section -->
+            <div class="upload-section">
+                <h3>Quick Photo Upload</h3>
+                <div class="upload-instructions">
+                    <p><strong>Easy way to add your profile picture:</strong></p>
+                    <ol>
+                        <li>Click the button below to select an image from your computer</li>
+                        <li>Choose a square photo for best results</li>
+                        <li>Your photo will appear instantly</li>
+                    </ol>
+                </div>
+                <input type="file" id="imageUpload" accept="image/*">
+                <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">
+                    <i class="fas fa-upload"></i> Upload Profile Picture
+                </button>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #8892b0;">
+                    Or use an online service like <a href="https://imgur.com" target="_blank" style="color: var(--secondary);">https://photos.google.com/album/AF1QipMuZxgG39Vvxvpp06SDHdDtfywpPCIhEdmhr9FH/photo/AF1QipM3O-l-nhnQ_C3duQqW6Cx6SV8lDbqUl8O8ujBV</a> and replace the image URL in the code.
+                </p>
             </div>
         </div>
     </section>
 
+    <!-- Rest of your portfolio sections (Skills, Experience, Education, Contact) -->
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
         <div class="container">
@@ -803,6 +875,23 @@
                     });
                 }
             });
+        });
+
+        // Image Upload Functionality
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImage = document.getElementById('profileImage');
+                    const profilePlaceholder = document.getElementById('profilePlaceholder');
+                    
+                    profileImage.src = e.target.result;
+                    profileImage.style.display = 'block';
+                    profilePlaceholder.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
         });
 
         // Create AI-themed background
