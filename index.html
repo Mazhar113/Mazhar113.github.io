@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Mazhar Ali | AI Engineer</title>
+    <title>Mr. Mazhar Ali |  AI Engineer </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -512,6 +512,111 @@
             box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
         }
 
+        /* Education Section */
+        .education-section {
+            background: linear-gradient(135deg, rgba(17, 34, 64, 0.8) 0%, rgba(10, 14, 23, 0.9) 100%);
+            position: relative;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: linear-gradient(145deg, rgba(17, 34, 64, 0.8), rgba(10, 14, 23, 0.9));
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .education-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .education-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), #0099cc);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .education-details {
+            flex: 1;
+        }
+
+        .education-title {
+            font-size: 1.6rem;
+            color: var(--light);
+            margin-bottom: 8px;
+        }
+
+        .education-institution {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .education-date {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .education-description {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .education-highlights {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .education-highlights li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--light);
+        }
+
+        .education-highlights li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
         /* Publications Section */
         .publications-section {
             background: linear-gradient(135deg, rgba(17, 34, 64, 0.8) 0%, rgba(10, 14, 23, 0.9) 100%);
@@ -919,6 +1024,10 @@
                 gap: 30px;
                 text-align: center;
             }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -964,6 +1073,15 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .education-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .education-icon {
+                align-self: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -980,6 +1098,10 @@
             }
             
             .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1003,6 +1125,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Expertise</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#publications">Research</a></li>
                     <li><a href="#experience">Career</a></li>
                     <li><a href="#contact">Connect</a></li>
@@ -1062,7 +1185,7 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>As a  AI Engineer with over 5 years of experience, I specialize in architecting and implementing sophisticated machine learning systems that solve complex business challenges. My work spans across multiple domains including natural language processing, computer vision, and predictive analytics.</p>
+                    <p>As a AI Engineer with over 5 years of experience, I specialize in architecting and implementing sophisticated machine learning systems that solve complex business challenges. My work spans across multiple domains including natural language processing, computer vision, and predictive analytics.</p>
                     <p>I've led teams in developing AI solutions that process millions of data points daily, delivering actionable insights and driving strategic decision-making for Fortune 500 companies and innovative startups alike.</p>
                     
                     <div class="expertise-grid">
@@ -1217,11 +1340,70 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-title">
+                <div class="number">03</div>
+                <h2>Education & Certification</h2>
+                <p class="subtitle">Building a strong academic foundation with specialized technical training</p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-details">
+                            <h3 class="education-title">BS Computer Science</h3>
+                            <div class="education-institution">University of Sindh</div>
+                            <div class="education-date">2015 - 2018</div>
+                        </div>
+                    </div>
+                    <p class="education-description">
+                        Comprehensive computer science education with focus on software engineering, algorithms, data structures, and artificial intelligence fundamentals. Developed strong foundation in programming, system design, and computational theory.
+                    </p>
+                    <ul class="education-highlights">
+                        <li>Specialized in Artificial Intelligence and Machine Learning</li>
+                        <li>Advanced coursework in Data Structures and Algorithms</li>
+                        <li>Software Engineering and System Architecture</li>
+                        <li>Database Management and Distributed Systems</li>
+                        <li>Computer Networks and Cybersecurity</li>
+                    </ul>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="education-details">
+                            <h3 class="education-title">Artificial Intelligence & Robotics</h3>
+                            <div class="education-institution">National Vocational and Technical Training Commission (NAVTTC)</div>
+                            <div class="education-date">September 2020 - March 2021</div>
+                        </div>
+                    </div>
+                    <p class="education-description">
+                        Advanced certification program focusing on practical applications of artificial intelligence, machine learning, and robotics. Hands-on training in intelligent systems, computer vision, and autonomous decision-making algorithms.
+                    </p>
+                    <ul class="education-highlights">
+                        <li>Machine Learning and Deep Learning Systems</li>
+                        <li>Computer Vision and Image Processing</li>
+                        <li>Robotics and Autonomous Systems</li>
+                        <li>Reinforcement Learning Algorithms</li>
+                        <li>AI Model Deployment and Optimization</li>
+                        <li>Real-time Decision Making Systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Publications Section -->
     <section id="publications" class="publications-section">
         <div class="container">
             <div class="section-title">
-                <div class="number">03</div>
+                <div class="number">04</div>
                 <h2>Research & Publications</h2>
                 <p class="subtitle">Contributing to the advancement of artificial intelligence through rigorous research</p>
             </div>
@@ -1259,7 +1441,7 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-title">
-                <div class="number">04</div>
+                <div class="number">05</div>
                 <h2>Career Journey</h2>
                 <p class="subtitle">Leading AI initiatives and driving technological innovation across industries</p>
             </div>
@@ -1325,7 +1507,7 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-title">
-                <div class="number">05</div>
+                <div class="number">06</div>
                 <h2>Let's Connect</h2>
                 <p class="subtitle">Ready to transform your business with AI? Let's discuss how we can work together</p>
             </div>
@@ -1418,16 +1600,16 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Expertise</a></li>
-                        <li><a href="#publications">Research</a></li>
+                        <li><a href="#education">Education</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Connect</h4>
                     <ul>
+                        <li><a href="#publications">Research</a></li>
                         <li><a href="#experience">Career</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="https://github.com/Mazhar113" target="_blank">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/mazhar-ali-9394532821/" target="_blank">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
@@ -1545,7 +1727,7 @@
         });
 
         // Observe elements for animation
-        document.querySelectorAll('section, .stat, .expertise-item, .skill-domain, .research-card, .timeline-content').forEach(el => {
+        document.querySelectorAll('section, .stat, .expertise-item, .skill-domain, .education-card, .research-card, .timeline-content').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
